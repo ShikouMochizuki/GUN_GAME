@@ -95,19 +95,25 @@ public class Player : MonoBehaviour {
 			if (turnSpeedX < -1 * MaxSpeedTurnX)
 				turnSpeedX = -1 * MaxSpeedTurnX;
 
-			//var angle = rbCamera.transform.eulerAngles.x;
-			//if (   angle < 360 - 70 && angle > 180 && turnSpeedX > 0		// ‰º‰ñ“]‚ğ~‚ß‚é
-			//	|| angle > 70 && angle < 180 && turnSpeedX < 0)		// ã‰ñ“]‚ğ~‚ß‚é
-			//	turnSpeedX = 0f;
-			float angle = MainCamera.transform.rotation.x;
-			if (   angle < -0.3 && turnSpeedX <	0		// ã‰ñ“]‚ğ~‚ß‚é
-				|| angle > 0.2 && turnSpeedX > 0)		// ‰º‰ñ“]‚ğ~‚ß‚é
+			var angle = MainCamera.transform.eulerAngles.x;
+			if (   angle > 70 && angle < 180 && turnSpeedX > 0	// ‰º‰ñ“]‚ğ~‚ß‚é
+				|| angle < 360 - 70 && angle > 180 && turnSpeedX < 0)			// ã‰ñ“]‚ğ~‚ß‚é
 				turnSpeedX = 0f;
+
+			//float angle = MainCamera.transform.rotation.x;
+			//if (   angle < -0.3 && turnSpeedX <	0		// ã‰ñ“]‚ğ~‚ß‚é
+			//	|| angle > 0.2 && turnSpeedX > 0)		// ‰º‰ñ“]‚ğ~‚ß‚é
+			//	turnSpeedX = 0f;
 		}
 		rb.angularVelocity = new Vector3(0f, turnSpeedY, 0f);
 		MainCamera.transform.Rotate(new Vector3(turnSpeedX, 0f, 0f));
 		//rbCamera.angularVelocity = new Vector3(turnSpeedX, 0f, 0f);
 		//Debug.Log("angle: " + rbCamera.transform.eulerAngles.x);
-		Debug.Log("angle" + MainCamera.transform.rotation.x);
+		//Debug.Log("angle" + MainCamera.transform.rotation.x);
+		Debug.Log("PlayerAngleY: " + transform.eulerAngles.y);
+		Debug.Log("PlayerAngleY (rotate): " + transform.rotation.y);
     }
 }
+
+// transform.eulerAngles ‚ÍA0`360‚Ì’l‚ğ•Ô‚·B²‚É‘Î‚µ‚ÄA‰E‚Ë‚¶•ûŒü‚ÅŒ¸­‚·‚éB
+// ‰E‚Ë‚¶‚Ì‹t‚Å‘‚¦‚Ä‚¢‚­‚Ì‚Å‚ ‚éB
