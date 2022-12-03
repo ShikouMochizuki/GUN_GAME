@@ -1,29 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+// Groundタグがついたオブジェクトを地形として認識する。
+// 接触やジャンプの判定で使用
 public class Player : MonoBehaviour {
 
-	public float MaxSpeedHorizontal = 4f;	// 水平方向最高速度
-	public float MaxAscentSpeed = 0.15f;	// 最高上昇速度
-	public float MaxFallSpeed = 0.2f;		// 最高落下速度
+	public float MaxSpeedHorizontal = 4f;   // 水平方向最高速度
+	public float MaxAscentSpeed = 0.15f;    // 最高上昇速度
+	public float MaxFallSpeed = 0.2f;       // 最高落下速度
 
 	public float ForceHorizontalMove = 30;
 	public float ForceAscent = 5;
 
-	public float MaxSpeedTurnY = 2f;
-	public float SpeedTurnIncreaseRateY = 3f;
-	public float MaxSpeedTurnX = 0.8f;
-	public float SpeedTurnIncreaseRateX = 0.4f;
+	public float TurnSpeedY = 4f;
+	public float TurnSpeedX = 4f;
 
-	public Camera MainCamera;
+	public Camera PlayerCamera;
 
 	private Rigidbody rb;
-	//private Rigidbody rbCamera;
-	
+
 	void Start() {
 		rb = gameObject.GetComponent<Rigidbody>();
-		//rbCamera = MainCamera.gameObject.GetComponent<Rigidbody>();
 	}
 
 	void Update() {
@@ -32,7 +28,7 @@ public class Player : MonoBehaviour {
 	}
 
 	private void OnCollisionStay(Collision collision) {
-		if (Input.GetKey(KeyCode.Space) && collision.gameObject.name == "Terrain")
+		if (Input.GetKey(KeyCode.Space) && collision.gameObject.tag == "Ground")
 			Jump();
 	}
 
@@ -71,6 +67,23 @@ public class Player : MonoBehaviour {
 	}
 
 	private void ChangeAngle() {
+		float MouseMoveX = Input.GetAxis("Mouse X");
+		float MouseMoveY = Input.GetAxis("Mouse Y");
+		float turnSpeedY = MouseMoveX * TurnSpeedY;
+		float turnSpeedX = MouseMoveY * TurnSpeedY * -1;
+
+		var angle = PlayerCamera.transform.eulerAngles.x;
+		if (   angle > 70       && angle < 180 && turnSpeedX > 0	// 下回転を止める
+			|| angle < 360 - 70 && angle > 180 && turnSpeedX < 0)	// 上回転を止める
+			turnSpeedX = 0f;
+
+		rb.transform.Rotate(new Vector3(0f, turnSpeedY, 0f));
+		PlayerCamera.transform.Rotate(new Vector3(turnSpeedX, 0f, 0f));
+	}
+
+	/* ■//■//■ カメラ移動旧バージョン ■//■//■
+
+	private void ChangeAngle() {
 		var	  mousePos	 = MainCamera.ScreenToViewportPoint(Input.mousePosition);
 		float turnSpeedY = 0f;
 		float absAngleY	 = Mathf.Abs(mousePos.x - 0.5f);    // 0.0 ～ 0.5
@@ -99,20 +112,13 @@ public class Player : MonoBehaviour {
 			if (   angle > 70 && angle < 180 && turnSpeedX > 0	// 下回転を止める
 				|| angle < 360 - 70 && angle > 180 && turnSpeedX < 0)			// 上回転を止める
 				turnSpeedX = 0f;
-
-			//float angle = MainCamera.transform.rotation.x;
-			//if (   angle < -0.3 && turnSpeedX <	0		// 上回転を止める
-			//	|| angle > 0.2 && turnSpeedX > 0)		// 下回転を止める
-			//	turnSpeedX = 0f;
 		}
 		rb.angularVelocity = new Vector3(0f, turnSpeedY, 0f);
 		MainCamera.transform.Rotate(new Vector3(turnSpeedX, 0f, 0f));
-		//rbCamera.angularVelocity = new Vector3(turnSpeedX, 0f, 0f);
-		//Debug.Log("angle: " + rbCamera.transform.eulerAngles.x);
-		//Debug.Log("angle" + MainCamera.transform.rotation.x);
-		Debug.Log("PlayerAngleY: " + transform.eulerAngles.y);
-		Debug.Log("PlayerAngleY (rotate): " + transform.rotation.y);
-    }
+		//Debug.Log("PlayerAngleY: " + transform.eulerAngles.y);
+		//Debug.Log("PlayerAngleY (rotate): " + transform.rotation.y);
+	}
+	*/
 }
 
 // transform.eulerAngles は、0～360の値を返す。軸に対して、右ねじ方向で減少する。
