@@ -81,6 +81,14 @@ public class Player : MonoBehaviour {
 		PlayerCamera.transform.Rotate(new Vector3(turnSpeedX, 0f, 0f));
 	}
 
+	public Bullet BulletPrefab;
+
+	public void ShotBullet(Vector3 targetPos)
+    {
+		var bullet = Object.Instantiate(BulletPrefab, transform.position, Quaternion.identity);
+		bullet.Init(transform.position, targetPos);
+    }
+
 	/* ■//■//■ カメラ移動旧バージョン ■//■//■
 
 	private void ChangeAngle() {
