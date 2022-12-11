@@ -4,7 +4,8 @@ using UnityEngine;
 // 接触やジャンプの判定で使用
 public class Player : MonoBehaviour {
 
-	public float MaxSpeedHorizontal = 5f;   // 水平方向最高速度
+	public float MaxSpeedWalk = 5f;   // 水平方向最高速度
+	public float MaxSpeedRun = 9f;
 	public float ForceHorizontalMove = 60;
 
 	public float ForceAscent = 5;
@@ -40,18 +41,24 @@ public class Player : MonoBehaviour {
 		if (Input.GetKey(KeyCode.S)) ForceH.z = -1f * ForceHorizontalMove;
 		if (Input.GetKey(KeyCode.A)) ForceH.x = -1f * ForceHorizontalMove;
 
+		float SpeedLimit;
+		if (Input.GetKey(KeyCode.C))
+			SpeedLimit = MaxSpeedRun;
+		else
+			SpeedLimit = MaxSpeedWalk;
+
 		// 速度制限
 		float vSpeedHorizontal = Mathf.Sqrt(rb.velocity.x * rb.velocity.x + rb.velocity.z * rb.velocity.z);
-		if (vSpeedHorizontal > MaxSpeedHorizontal) {
+		if (vSpeedHorizontal > SpeedLimit) {
 			var unitVec = new Vector3(
 				rb.velocity.x / vSpeedHorizontal,
 				0f,
 				rb.velocity.z / vSpeedHorizontal
 			);
 			rb.velocity = new Vector3(
-				unitVec.x * MaxSpeedHorizontal,
+				unitVec.x * SpeedLimit,
 				rb.velocity.y,
-				unitVec.z * MaxSpeedHorizontal
+				unitVec.z * SpeedLimit
 			);
 		}
 
