@@ -4,15 +4,13 @@ using UnityEngine;
 // 接触やジャンプの判定で使用
 public class Player : MonoBehaviour {
 
-	public float MaxSpeedHorizontal = 4f;   // 水平方向最高速度
-	public float MaxAscentSpeed = 0.15f;    // 最高上昇速度
-	public float MaxFallSpeed = 0.2f;       // 最高落下速度
+	public float MaxSpeedHorizontal = 5f;   // 水平方向最高速度
+	public float ForceHorizontalMove = 60;
 
-	public float ForceHorizontalMove = 30;
 	public float ForceAscent = 5;
 
-	public float TurnSpeedY = 4f;
-	public float TurnSpeedX = 4f;
+	public float TurnSpeedY = 3.5f;
+	public float TurnSpeedX = 3.5f;
 
 	public Camera PlayerCamera;
 
@@ -23,8 +21,10 @@ public class Player : MonoBehaviour {
 	}
 
 	void Update() {
-		ChangeAngle();
-		Move();
+		if (GameState.State == GameState.PLAY) {
+			ChangeAngle();
+			Move();
+		}
 	}
 
 	private void OnCollisionStay(Collision collision) {
