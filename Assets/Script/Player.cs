@@ -35,10 +35,10 @@ public class Player : MonoBehaviour {
 	private void Move() {
 		// ì¸óÕÇå≥Ç…óÕÇâ¡Ç¶ÇÈ
 		var ForceH = new Vector3(0f, 0f, 0f);
-		if (Input.GetKey(KeyCode.E)) ForceH.z = ForceHorizontalMove;
-		if (Input.GetKey(KeyCode.F)) ForceH.x = ForceHorizontalMove;
-		if (Input.GetKey(KeyCode.D)) ForceH.z = -1f * ForceHorizontalMove;
-		if (Input.GetKey(KeyCode.S)) ForceH.x = -1f * ForceHorizontalMove;
+		if (Input.GetKey(KeyCode.W)) ForceH.z = ForceHorizontalMove;
+		if (Input.GetKey(KeyCode.D)) ForceH.x = ForceHorizontalMove;
+		if (Input.GetKey(KeyCode.S)) ForceH.z = -1f * ForceHorizontalMove;
+		if (Input.GetKey(KeyCode.A)) ForceH.x = -1f * ForceHorizontalMove;
 
 		// ë¨ìxêßå¿
 		float vSpeedHorizontal = Mathf.Sqrt(rb.velocity.x * rb.velocity.x + rb.velocity.z * rb.velocity.z);
