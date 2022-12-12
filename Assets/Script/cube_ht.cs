@@ -18,7 +18,7 @@ public class cube_ht : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.name == "Player")
+        if(collision.gameObject.tag == "Bullet")
         {
             Destroy(gameObject);
         }
