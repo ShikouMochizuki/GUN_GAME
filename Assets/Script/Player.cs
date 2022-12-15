@@ -42,7 +42,8 @@ public class Player : MonoBehaviour {
 		if (Input.GetKey(KeyCode.A)) ForceH.x = -1f * ForceHorizontalMove;
 
 		float SpeedLimit;
-		if (Input.GetKey(KeyCode.C))
+		//if (Input.GetKey(KeyCode.Q))
+		if (Input.GetMouseButton(1))
 			SpeedLimit = MaxSpeedRun;
 		else
 			SpeedLimit = MaxSpeedWalk;
