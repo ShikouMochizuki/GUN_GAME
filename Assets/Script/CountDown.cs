@@ -13,6 +13,8 @@ public class CountDown : MonoBehaviour {
 
 	void Update() {
 		++count;
+		if (Input.GetKeyDown(KeyCode.Q))
+			NumberDisplayed = -1;
 		if (count % Application.targetFrameRate == 0)
 			--NumberDisplayed;
 
