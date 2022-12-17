@@ -8,7 +8,7 @@ public class Player : MonoBehaviour {
 	public float MaxSpeedRun = 9f;
 	public float ForceHorizontalMove = 60;
 
-	public float ForceAscent = 5;
+	public float ForceAscent = 10f;
 
 	public float TurnSpeedY = 3.5f;
 	public float TurnSpeedX = 3.5f;
