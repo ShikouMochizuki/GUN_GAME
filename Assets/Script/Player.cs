@@ -64,7 +64,7 @@ public class Player : MonoBehaviour {
 		}
 
 		// 力を加える
-		rb.AddForce(transform.rotation * ForceH);
+		rb.AddForce(transform.rotation * ForceH + transform.up * 3f);
 		//Debug.Log(transform.forward);			// オブジェクトのz軸方向を表すワールド単位ベクトル（-0.35, 0.00, 0.94 とか）
 		//Debug.Log(rb.transform.forward);		// 上記に同じ
 		//Debug.Log(Vector3.forward);			// 0,0,1で固定（ローカル座標値であるため）
