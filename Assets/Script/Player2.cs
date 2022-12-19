@@ -32,7 +32,7 @@ public class Player2 : MonoBehaviour {
 			ChangeAngle();
 			OperateVelocityHorizontal();
 			OperateVelocityVertical();
-			cc.Move(move);
+			cc.Move(transform.TransformDirection(move));
 		}
 	}
 

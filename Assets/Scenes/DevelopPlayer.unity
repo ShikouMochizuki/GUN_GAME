@@ -132,12 +132,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -3791613270483307509, guid: 7b5dbf8125a1a10409c93841b7431d3e, type: 3}
       propertyPath: MaxSpeedRun
-      value: 0.01
+      value: 0.14
       objectReference: {fileID: 0}
     - target: {fileID: -3791613270483307509, guid: 7b5dbf8125a1a10409c93841b7431d3e, type: 3}
       propertyPath: MaxSpeedWalk
-      value: 0.05
+      value: 0.09
       objectReference: {fileID: 0}
+    - target: {fileID: -3791613270483307509, guid: 7b5dbf8125a1a10409c93841b7431d3e, type: 3}
+      propertyPath: PlayerCamera
+      value: 
+      objectReference: {fileID: 522162151}
     - target: {fileID: 4839666131937981489, guid: 7b5dbf8125a1a10409c93841b7431d3e, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -298,6 +302,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &522162151 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 4839666132474934409, guid: 7b5dbf8125a1a10409c93841b7431d3e, type: 3}
+  m_PrefabInstance: {fileID: 300562825}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &659590357
 GameObject:
   m_ObjectHideFlags: 0
