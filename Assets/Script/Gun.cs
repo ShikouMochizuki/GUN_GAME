@@ -16,11 +16,11 @@ public class Gun : MonoBehaviour
 
 	void Update()
 	{
-		//if (Input.GetKeyDown(KeyCode.Space))
-		if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E))
-		{
-			var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-			bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * bulletSpeed;// + rb.velocity;
+		if (GameState.State == GameState.PLAY) {
+			if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E)) {
+				var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+				bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * bulletSpeed;// + rb.velocity;
+			}
 		}
 	}
 }
