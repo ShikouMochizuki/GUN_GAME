@@ -6,7 +6,8 @@ public class Player2 : MonoBehaviour {
 
 	public float MaxSpeedWalk  = 0.09f;	// 水平方向最高速度（ウォーク）
 	public float MaxSpeedRun   = 0.14f;	// 酸い方向最高速度（ダッシュ）
-	public float AccHorizontal = 0.02f;    // 水平方向加速度
+	public float AccHorizontal = 0.04f;	// 水平方向加速度
+	public float DecFriction   = 0.02f; // 摩擦による減速方向の加速度
 
 	public float MaxSpeedVertical = 0.13f;	// 垂直方向最高速度
 	public float AscentSpeed	  = 0.13f;	// ジャンプ時の上昇速度
@@ -32,56 +33,64 @@ public class Player2 : MonoBehaviour {
 			ChangeAngle();
 			OperateVelocityHorizontal();
 			OperateVelocityVertical();
-			cc.Move(transform.TransformDirection(move));
+			Move();
 		}
 	}
 
-	//private void OnCollisionStay(Collision collision) {
-	//	if (Input.GetKey(KeyCode.Space) && collision.gameObject.tag == "Ground")
-	//		Jump();
-	//}
+	private void Move() {
+
+		// 水平方向の速度が極端に小さい場合は静止させる
+		Vector3 moveTmp;	// 冗長な書き方だが、ディープコピーするにはこうするしかないのかも
+		moveTmp.x = move.x;
+		moveTmp.y = move.y;
+		moveTmp.z = move.z;
+		Debug.Log(move.x);
+		Debug.Log(Mathf.Abs(move.x));
+		if (Mathf.Abs(move.x) < 0.03)
+			moveTmp.x = 0f;
+		if (Mathf.Abs(move.z) < 0.03)
+			moveTmp.z = 0f;
+
+		// 移動
+		cc.Move(transform.TransformDirection(moveTmp));
+	}
 
 	private void OperateVelocityHorizontal() {
-		// 入力を元に水平方向へ加速
-		//var ForceH = new Vector3(0f, 0f, 0f);
-		//if (Input.GetKey(KeyCode.W)) move.z += AccHorizontal;
-		//if (Input.GetKey(KeyCode.D)) move.x += AccHorizontal;
-		//if (Input.GetKey(KeyCode.S)) move.z += -1f * AccHorizontal;
-		//if (Input.GetKey(KeyCode.A)) move.x += -1f * AccHorizontal;
+		if (cc.isGrounded) {
+			// 入力を元に水平方向へ加速
+			if (Input.GetKey(KeyCode.W)) move.z += AccHorizontal;
+			if (Input.GetKey(KeyCode.D)) move.x += AccHorizontal;
+			if (Input.GetKey(KeyCode.S)) move.z += -1f * AccHorizontal;
+			if (Input.GetKey(KeyCode.A)) move.x += -1f * AccHorizontal;
 
-		// 摩擦による減速
-		//if (cc.isGrounded)
+			// 摩擦による減速
+			if (move.x > 0) move.x -= DecFriction;
+			else			move.x += DecFriction;
+			if (move.z > 0) move.z -= DecFriction;
+			else			move.z += DecFriction;
+		}
 
-		// 最高速度を決定
+		// 最高速度を決定（WALKとRUNで異なる）
 		float SpeedLimit;
 		if (Input.GetMouseButton(1))
 			SpeedLimit = MaxSpeedRun;
 		else
 			SpeedLimit = MaxSpeedWalk;
 
-		// 入力から水平方向の速度を決定
-		if (Input.GetKey(KeyCode.W)) move.z = SpeedLimit;
-		else if (Input.GetKey(KeyCode.S)) move.z = -1f * SpeedLimit;
-		else move.z = 0;
-
-		if (Input.GetKey(KeyCode.D)) move.x = SpeedLimit;
-		else if (Input.GetKey(KeyCode.A)) move.x = -1f * SpeedLimit;
-		else move.x = 0;
-
 		// 水平方向の速度制限
-		//float vSpeedHorizontal = Mathf.Sqrt(move.x * move.x + move.z * move.z);
-		//if (vSpeedHorizontal > SpeedLimit) {
-		//	var unitVec = new Vector3(
-		//		move.x / vSpeedHorizontal,
-		//		0f,
-		//		move.z / vSpeedHorizontal
-		//	);
-		//	move = new Vector3(
-		//		unitVec.x * SpeedLimit,
-		//		move.y,
-		//		unitVec.z * SpeedLimit
-		//	);
-		//}
+		float vSpeedHorizontal = Mathf.Sqrt(move.x * move.x + move.z * move.z);
+		if (vSpeedHorizontal > SpeedLimit) {
+			var unitVec = new Vector3(
+				move.x / vSpeedHorizontal,
+				0f,
+				move.z / vSpeedHorizontal
+			);
+			move = new Vector3(
+				unitVec.x * SpeedLimit,
+				move.y,
+				unitVec.z * SpeedLimit
+			);
+		}
 	}
 
 	private void OperateVelocityVertical() {
