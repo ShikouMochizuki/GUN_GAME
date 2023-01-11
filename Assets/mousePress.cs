@@ -16,12 +16,17 @@ public class mousePress : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            GameObject.Find("ScoreGUI").GetComponent<ScoreController>().AddScore();
+            GameObject.Find("ScoreGUI/Score_Num").GetComponent<ScoreController>().AddScore10();
+        }
+
+        if (Input.GetMouseButtonDown(2))
+        {
+            GameObject.Find("ScoreGUI/Score_Num").GetComponent<ScoreController>().AddScore100();
         }
 
         if (Input.GetMouseButtonDown(1))
         {
-            GameObject.Find("ScoreGUI").GetComponent<ScoreController>().ClearScore();
+            GameObject.Find("ScoreGUI/Score_Num").GetComponent<ScoreController>().ClearScore();
         }
 
     }

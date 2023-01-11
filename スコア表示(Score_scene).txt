@@ -1,0 +1,13 @@
+    //衝突判定のコード内に以下を追記してもらう。
+    //スコア+100のとき↓
+    //GameObject.Find("ScoreGUI/Score_Num").GetComponent<ScoreController>().AddScore100();
+    //スコア+50のとき↓
+    //GameObject.Find("ScoreGUI/Score_Num").GetComponent<ScoreController>().AddScore50();
+    //スコア+10のとき↓
+    //GameObject.Find("ScoreGUI/Score_Num").GetComponent<ScoreController>().AddScore10();
+    //スコア+5のとき↓
+    //GameObject.Find("ScoreGUI/Score_Num").GetComponent<ScoreController>().AddScore10();
+
+
+    //スコアリセットの場合はコード内に以下を追記してもらう。
+    //GameObject.Find("ScoreGUI/Score_Num").GetComponent<ScoreController>().ClearScore();
