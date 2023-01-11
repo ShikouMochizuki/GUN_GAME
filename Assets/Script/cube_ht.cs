@@ -2,25 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class cube_ht : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public class cube_ht : MonoBehaviour {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	public GameObject explosionPrefab;
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.tag == "Bullet")
-        {
-            Destroy(gameObject);
-        }
-    }
+	private void OnCollisionEnter(Collision collision) {
+		if(collision.gameObject.tag == "Bullet") {
+			Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+			Destroy(gameObject);
+		}
+	}
 }
