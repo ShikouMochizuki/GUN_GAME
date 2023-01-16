@@ -44,8 +44,8 @@ public class Player2 : MonoBehaviour {
 		moveTmp.x = move.x;
 		moveTmp.y = move.y;
 		moveTmp.z = move.z;
-		Debug.Log(move.x);
-		Debug.Log(Mathf.Abs(move.x));
+		//Debug.Log(move.x);
+		//Debug.Log(Mathf.Abs(move.x));
 		if (Mathf.Abs(move.x) < 0.03)
 			moveTmp.x = 0f;
 		if (Mathf.Abs(move.z) < 0.03)

@@ -6,6 +6,7 @@ public class Ready : MonoBehaviour {
 	
 	void Start() {
 		Application.targetFrameRate = 60;
+		Score.ResetPoint();
 		//QualitySettings.vSyncCount = 0;
 	}
 }
