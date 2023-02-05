@@ -4,18 +4,30 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float life = 3;
+	public float LifeSpan = 3;
+	public int HitPoint = 2;
+	private int count = 0;
 
-    void Awake()
-    {
-        Destroy(gameObject, life);
-    }
+	void Awake() {
+		Destroy(gameObject, LifeSpan);
+	}
 
-    void OnCollisionEnter(Collision collision)
-    {
-        //Destroy(collision.gameObject);
-        //if (collision.gameObject.tag != "Player" && collision.gameObject.tag != "Wall")
-        // レイヤーを分けたので、透明な壁やプレイヤーとはそもそも衝突しない
-            Destroy(gameObject);
-    }
+	void Update() {
+		if (count < 3) ++count;
+	}
+
+	void OnCollisionEnter(Collision collision) {
+		//Destroy(collision.gameObject);
+		//if (collision.gameObject.tag != "Player" && collision.gameObject.tag != "Wall")
+
+
+		// レイヤーを分けたので、透明な壁やプレイヤーとはそもそも衝突しない
+		// ヒット直後は少し無敵時間
+		if (count >= 3) {
+			--HitPoint;
+			count = 0;
+		}
+		if (HitPoint <= 0)
+			Destroy(gameObject);
+	}
 }
