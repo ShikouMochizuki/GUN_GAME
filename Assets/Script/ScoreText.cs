@@ -18,7 +18,7 @@ public class ScoreText : MonoBehaviour {
 			comText.enabled = true;
 		else if (GameState.State == GameState.PLAY)
 			comText.text = "SCORE: " + Score.GetPoint().ToString();
-		else if (GameState.State == GameState.END)
+		else if (GameState.State == GameState.TITLE)
 			comText.enabled = false;
 	}
 }

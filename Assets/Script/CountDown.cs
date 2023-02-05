@@ -5,6 +5,7 @@ public class CountDown : MonoBehaviour {
 
 	private int count = 0;
 	private int NumberDisplayed = 3;
+	private bool end = false;
 	private Text comText;
 
 	void Start() {
@@ -23,9 +24,10 @@ public class CountDown : MonoBehaviour {
 		else
 			comText.text = "START";
 
-		if (NumberDisplayed < 0) {
+		if (NumberDisplayed < 0 && !end) {
 			Destroy(comText);
 			GameState.State = GameState.PLAY;
+			end = true;
 		}
 	}
 }

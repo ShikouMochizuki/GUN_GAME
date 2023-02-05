@@ -4173,7 +4173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed1fb454a6bd3c4faa4008ef77a89c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxTargetNum: 20
+  MaxTargetNum: 30
 --- !u!1001 &777936609
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5899,6 +5899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1cdd0939cd537b408bb4a939d34a86a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TimeLimitS: 90
 --- !u!1001 &1400037780
 PrefabInstance:
   m_ObjectHideFlags: 0

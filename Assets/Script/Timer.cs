@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour{
+
+	public int TimeLimitS = 90;
 
 	private bool isRun = false;
 	private float StartTime;
@@ -15,7 +18,7 @@ public class Timer : MonoBehaviour{
 
 	void Start() {
 		comText = gameObject.GetComponent<UnityEngine.UI.Text>();
-		comText.text = "00:00.00";
+		comText.text = "残り時間";
 		comText.enabled = false;
 	}
 
@@ -28,7 +31,7 @@ public class Timer : MonoBehaviour{
 				StartTime = Time.time;
 			}
 			else {
-				time = Time.time - StartTime;
+				time = TimeLimitS - (Time.time - StartTime);
 				timeS = (int)time;
 				timeM = timeS / 60;
 				timeS -= timeM * 60;
@@ -39,11 +42,23 @@ public class Timer : MonoBehaviour{
 					(timeMS < 10 ? "0" + timeMS.ToString() : timeMS.ToString());
 
 				//comText.text = time.ToString();
+				if (time < 0) {
+					GameState.State = GameState.END;
+					Debug.Log("終了しましたよ");
+				}
 			}
 		}
 		else if (GameState.State == GameState.END) {
 			isRun = false;
-			comText.enabled = false;
+			//comText.enabled = false;
+			comText.text = "ゲーム終了 エスケープキーでタイトルに戻ります";
+			if (Input.GetKey(KeyCode.Escape)) {
+				GameState.State = GameState.TITLE;
+				SceneManager.LoadScene("a");
+			}
 		}
+		// デバッグ用
+		if (Input.GetKey(KeyCode.O) && Input.GetKey(KeyCode.P))
+			GameState.State = GameState.COUNT_DOWN;
 	}
 }

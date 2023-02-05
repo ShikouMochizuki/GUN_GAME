@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class test : MonoBehaviour
 {
@@ -22,6 +23,10 @@ public class test : MonoBehaviour
             this.gameObject.transform.position += new Vector3(0, 0.1f, 0);
 
         }
+        if (Input.GetKey(KeyCode.Return)) {
+            GameState.State = GameState.COUNT_DOWN;
+            SceneManager.LoadScene("DevelopPlayer");
+		}
 
     }
     void OnCollisionEnter(Collision c)
