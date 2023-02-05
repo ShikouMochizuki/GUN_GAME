@@ -14,7 +14,8 @@ public class Bullet : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         //Destroy(collision.gameObject);
-        if (collision.gameObject.tag != "Player")
+        //if (collision.gameObject.tag != "Player" && collision.gameObject.tag != "Wall")
+        // レイヤーを分けたので、透明な壁やプレイヤーとはそもそも衝突しない
             Destroy(gameObject);
     }
 }

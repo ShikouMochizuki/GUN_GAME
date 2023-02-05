@@ -6,14 +6,15 @@ TagManager:
   tags:
   - Ground
   - Bullet
+  - Wall
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - WallAndPlayer
   - Water
   - UI
-  - 
+  - Bullet
   - 
   - 
   - 
