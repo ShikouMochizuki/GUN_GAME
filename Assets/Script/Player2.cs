@@ -56,13 +56,13 @@ public class Player2 : MonoBehaviour {
 	}
 
 	private void OperateVelocityHorizontal() {
+		
+		// “ü—Í‚ðŒ³‚É…•½•ûŒü‚Ö‰Á‘¬
+		if (Input.GetKey(KeyCode.W)) move.z += AccHorizontal;
+		if (Input.GetKey(KeyCode.D)) move.x += AccHorizontal;
+		if (Input.GetKey(KeyCode.S)) move.z += -1f * AccHorizontal;
+		if (Input.GetKey(KeyCode.A)) move.x += -1f * AccHorizontal;
 		if (cc.isGrounded) {
-			// “ü—Í‚ðŒ³‚É…•½•ûŒü‚Ö‰Á‘¬
-			if (Input.GetKey(KeyCode.W)) move.z += AccHorizontal;
-			if (Input.GetKey(KeyCode.D)) move.x += AccHorizontal;
-			if (Input.GetKey(KeyCode.S)) move.z += -1f * AccHorizontal;
-			if (Input.GetKey(KeyCode.A)) move.x += -1f * AccHorizontal;
-
 			// –€ŽC‚É‚æ‚éŒ¸‘¬
 			if (move.x > 0) move.x -= DecFriction;
 			else			move.x += DecFriction;
