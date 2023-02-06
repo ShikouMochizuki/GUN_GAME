@@ -52,6 +52,7 @@ public class Timer : MonoBehaviour{
 			isRun = false;
 			//comText.enabled = false;
 			comText.text = "ゲーム終了 エスケープキーでタイトルに戻ります";
+			comText.transform.localPosition = new Vector3(0, 0, 0);
 			if (Input.GetKey(KeyCode.Escape)) {
 				GameState.State = GameState.TITLE;
 				SceneManager.LoadScene("a");
