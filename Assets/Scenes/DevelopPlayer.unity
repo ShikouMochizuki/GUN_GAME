@@ -5134,6 +5134,7 @@ GameObject:
   - component: {fileID: 1156121977}
   - component: {fileID: 1156121976}
   - component: {fileID: 1156121978}
+  - component: {fileID: 1156121979}
   m_Layer: 5
   m_Name: TextPopup
   m_TagString: Untagged
@@ -5215,6 +5216,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87e37211cec616c4a80d8f9c18fe5859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1156121979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156121974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &1156416416
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5947,6 +5963,7 @@ GameObject:
   - component: {fileID: 1396538555}
   - component: {fileID: 1396538554}
   - component: {fileID: 1396538556}
+  - component: {fileID: 1396538557}
   m_Layer: 5
   m_Name: TextTime
   m_TagString: Untagged
@@ -6029,6 +6046,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimeLimitS: 90
+--- !u!114 &1396538557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396538552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &1400037780
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7012,6 +7044,7 @@ GameObject:
   - component: {fileID: 1675690972}
   - component: {fileID: 1675690971}
   - component: {fileID: 1675690973}
+  - component: {fileID: 1675690974}
   m_Layer: 5
   m_Name: TextScore
   m_TagString: Untagged
@@ -7093,6 +7126,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cf8f50163fdbfd48bf771433a5e8c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1675690974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675690969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &1681584452
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7167,6 +7215,7 @@ GameObject:
   - component: {fileID: 1681777898}
   - component: {fileID: 1681777897}
   - component: {fileID: 1681777899}
+  - component: {fileID: 1681777900}
   m_Layer: 5
   m_Name: TextCountDown
   m_TagString: Untagged
@@ -7248,6 +7297,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39f9f060fab4fa94f8c26e3fc0aa13c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1681777900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681777895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &1688548158
 PrefabInstance:
   m_ObjectHideFlags: 0

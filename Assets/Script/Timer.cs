@@ -42,7 +42,7 @@ public class Timer : MonoBehaviour{
 					(timeMS < 10 ? "0" + timeMS.ToString() : timeMS.ToString());
 
 				//comText.text = time.ToString();
-				if (time < 0) {
+				if (time < 0 || Input.GetKey(KeyCode.Escape)) {
 					GameState.State = GameState.END;
 					Debug.Log("終了しましたよ");
 				}

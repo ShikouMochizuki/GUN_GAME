@@ -24,7 +24,7 @@ public class PopupText : MonoBehaviour {
 		if (count % 10 < 5)
 			comText.color = (red ? new Color(1f, 0, 0) : new Color(1f, 0.5f, 0));
 		else
-			comText.color = new Color(1f, 1f, 0);
+			comText.color = new Color(0.8f, 0.8f, 0);
 	}
 
 	public void DisplayPoint(int point, int rate) {
