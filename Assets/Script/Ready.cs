@@ -9,4 +9,8 @@ public class Ready : MonoBehaviour {
 		Score.ResetPoint();
 		//QualitySettings.vSyncCount = 0;
 	}
+
+	void Update() {
+		Score.Update();
+	}
 }

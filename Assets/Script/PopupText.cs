@@ -7,6 +7,7 @@ public class PopupText : MonoBehaviour {
 
 	private Text comText;
 	private int count;
+	private bool red = true;
 
 	void Start() {
 		comText = gameObject.GetComponent<Text>();
@@ -21,7 +22,7 @@ public class PopupText : MonoBehaviour {
 			comText.enabled = false;
 
 		if (count % 10 < 5)
-			comText.color = new Color(1f, 0, 0);
+			comText.color = (red ? new Color(1f, 0, 0) : new Color(1f, 0.5f, 0));
 		else
 			comText.color = new Color(1f, 1f, 0);
 	}
@@ -30,5 +31,6 @@ public class PopupText : MonoBehaviour {
 		comText.text = "+ " + point + "~" + rate;
 		comText.enabled = true;
 		count = 60;
+		red = (point == 10 ? false : true);
 	}
 }
