@@ -6,7 +6,10 @@ public class Target : MonoBehaviour {
 
 	public GameObject explosionPrefab;
 	public int point = 10;
-	public int WaitingTime = 180;		// フレーム単位
+	public int WaitingTime = 180;       // フレーム単位
+
+	public AudioClip se;
+	private AudioSource sound;
 
 	private static int TargetNum = 0;
 	private TargetSpawnPoint MyPoint;
@@ -17,6 +20,7 @@ public class Target : MonoBehaviour {
 		++TargetNum;
 		transform.localScale = new Vector3(0f, 0f, 0f);
 		Debug.Log(TargetNum + " Created");
+		sound = GetComponent<AudioSource>();
 	}
 
 	// 3秒待った後、スケール2まで徐々に大きくなっていく
@@ -52,6 +56,7 @@ public class Target : MonoBehaviour {
 			else
 				Score.AddPoint(point);
 			Debug.Log(Score.GetPoint());
+			sound.PlayOneShot(se);
 			Destroy(gameObject);
 		}
 	}
