@@ -46,7 +46,11 @@ public class Target : MonoBehaviour {
 		if(collision.gameObject.tag == "Bullet") {
 			Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 			MyPoint.NotifyDeleteTarget();
-			Score.AddPoint(point);
+			var bullet = collision.gameObject.GetComponent<Bullet>();
+			if (bullet.isReflect)
+				Score.AddPoint(point * 2);
+			else
+				Score.AddPoint(point);
 			Debug.Log(Score.GetPoint());
 			Destroy(gameObject);
 		}

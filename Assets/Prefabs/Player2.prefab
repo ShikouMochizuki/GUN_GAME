@@ -71,7 +71,7 @@ MonoBehaviour:
   DecFriction: 0.02
   MaxSpeedVertical: 0.13
   AscentSpeed: 0.13
-  JumpPower: 30
+  JumpPower: 17
   AccGravity: 0.005
   TurnSpeedY: 3.5
   TurnSpeedX: 3.5

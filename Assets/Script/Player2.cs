@@ -70,12 +70,13 @@ public class Player2 : MonoBehaviour {
 			else			move.z += DecFriction;
 		}
 
-		// 最高速度を決定（WALKとRUNで異なる）
+		// 最高速度を決定（WALKとRUNで異なる）(＜＝同じにした)
 		float SpeedLimit;
 		if (Input.GetMouseButton(1))
 			SpeedLimit = MaxSpeedRun;
 		else
-			SpeedLimit = MaxSpeedWalk;
+			//SpeedLimit = MaxSpeedWalk;
+			SpeedLimit = MaxSpeedRun;
 
 		// 水平方向の速度制限
 		float vSpeedHorizontal = Mathf.Sqrt(move.x * move.x + move.z * move.z);

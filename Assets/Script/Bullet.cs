@@ -6,7 +6,8 @@ public class Bullet : MonoBehaviour
 {
 	public float LifeSpan = 3;
 	public int HitPoint = 2;
-	private int count = 0;
+	public bool isReflect = false;
+	public int count = 0;
 
 	void Awake() {
 		Destroy(gameObject, LifeSpan);
@@ -14,6 +15,8 @@ public class Bullet : MonoBehaviour
 
 	void Update() {
 		if (count < 3) ++count;
+		if (HitPoint < 2 && count > 1)
+			isReflect = true;
 	}
 
 	void OnCollisionEnter(Collision collision) {
